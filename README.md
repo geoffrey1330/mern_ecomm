@@ -20,18 +20,8 @@
 - PayPal / credit card integration
 - Database seeder (products & users)
 
-## Note on Issues
-Please do not post issues here that are related to your own code when taking the course. Add those in the Udemy Q/A. If you clone THIS repo and there are issues, then you can submit
 
 ## Usage
-
-### ES Modules in Node
-
-We use ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
-
-Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
-
-You can also install and setup Babel if you would like
 
 ### Env Variables
 
@@ -58,10 +48,16 @@ npm install
 
 ```
 # Run frontend (:3000) & backend (:5000)
+cd backend
 npm run dev
 
 # Run backend only
+cd backend
 npm run server
+
+# Run frontend only
+cd frontend
+npm start
 ```
 
 ## Build & Deploy
@@ -71,9 +67,6 @@ npm run server
 cd frontend
 npm run build
 ```
-
-There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
-
 ### Seed Database
 
 You can use the following commands to seed the database with some sample users and products as well as destroy all data
