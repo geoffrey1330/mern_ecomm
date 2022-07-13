@@ -451,8 +451,8 @@ workflows:
           requires: [build-backend]
       - scan-frontend:
           requires: [build-frontend]
-      # - deploy-infrastructure:
-      #     requires: [test-frontend, test-backend, scan-frontend, scan-backend]
+      - deploy-infrastructure:
+          requires: [scan-frontend, scan-backend]
       #     filters:
       #       branches:
       #         only: [main]
