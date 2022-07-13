@@ -453,10 +453,10 @@ workflows:
           requires: [build-frontend]
       - deploy-infrastructure:
           requires: [scan-frontend, scan-backend]
-          
-      #     filters:
-      #       branches:
-      #         only: [main]
+          filters:
+            branches:
+              only: [main]
+              
       # - configure-infrastructure:
       #     requires: [deploy-infrastructure]
       # # - run-migrations:
