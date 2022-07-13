@@ -443,7 +443,7 @@ workflows:
     jobs:
       - build-frontend
       - build-backend
-      
+
       # - test-frontend:
       #     requires: [build-frontend]
       # - test-backend:
@@ -458,8 +458,8 @@ workflows:
             branches:
               only: [main]
 
-      # - configure-infrastructure:
-      #     requires: [deploy-infrastructure]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
       # # - run-migrations:
       # #     requires: [configure-infrastructure]
       # - deploy-frontend:
