@@ -65,7 +65,7 @@
 #     npm install
 - name: "build package"
   become: true
-  command: npm run build
+  command: npm run build --if-present
   args:
     chdir: /home/ubuntu/backend
 
