@@ -310,8 +310,7 @@ jobs:
       - run:
           name: create .env files
           command: |
-            echo ENVIROMENT=production > "backend/.env"
-            echo NODE_ENV=production > "backend/.env"
+            echo NODE_ENV=development > "backend/.env"
             echo MONGO_URI=$MONGO_URI >> "backend/.env"
             echo PORT=$PORT >> "backend/.env"
             echo JWT_SECRET=$JWT_SECRET >> "backend/.env"
@@ -456,8 +455,8 @@ workflows:
           requires: [deploy-infrastructure]
       # # - run-migrations:
       # #     requires: [configure-infrastructure]
-      # - deploy-frontend:
-      #     requires: [configure-infrastructure]
+      - deploy-frontend:
+          requires: [configure-infrastructure]
       - deploy-backend:
           requires: [configure-infrastructure]
       # - smoke-test:

@@ -70,11 +70,11 @@
     chdir: /home/ubuntu/backend
 
 
-# - name: "Stop node"
-#   become: true
-#   command: pm2 stop default
-#   args:
-#     chdir: /home/ubuntu/backend
+- name: "Execute seeder "
+  become: true
+  command: npm run data:import
+  args:
+    chdir: /home/ubuntu/backend
 
 - name: "Executing node"
   become: true
