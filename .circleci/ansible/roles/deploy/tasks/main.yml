@@ -9,12 +9,30 @@
   apt:
     upgrade: "yes"
 
+# - name: Install the gpg key for nodejs LTS
+#   apt_key:
+#     url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+#     state: present
+
+# https://deb.nodesource.com/setup_14.x
+
+# - name: Install the nodejs LTS repos
+#   apt_repository:
+#     repo: "deb https://deb.nodesource.com/node_{{ NODEJS_VERSION }}.x {{ ansible_distribution_release }} main"
+#     state: present
+#     update_cache: yes
+
 # - name: "install dependencies"
 #   become: true
 #   apt:
 #     name: ["nodejs", "npm"]
-#     state: latest
+#     state: present
 #     update_cache: "yes"
+
+- name: install node 
+  shell: |
+    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash - && sudo apt-get install -y nodejs
+
 
 - name: Creates directory
   file:

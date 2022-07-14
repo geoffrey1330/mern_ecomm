@@ -265,7 +265,7 @@ jobs:
             export OLD_URL="http://127.0.0.1:5000",
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:5000" >> frontend/.env
-            sed -i 's/$OLD_URL/$API_URL/g' frontend/package.json
+            sed -i 's/127.0.0.1:5000/$API_URL/g' frontend/package.json
             cat frontend/package.json
       - run:
           name: Deploy frontend objects
@@ -294,8 +294,6 @@ jobs:
           name: Install dependencies
           command: |
             apk add --update ansible tar gzip nodejs npm curl
-            curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-            apt-get install -y nodejs
             pip install awscli
       - run:
           name: create .env files
