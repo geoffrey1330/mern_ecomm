@@ -13,7 +13,8 @@
   become: true
   apt:
     name: ["nodejs", "npm"]
-    update_cache: "yes"
+    state: latest
+    update_cache: yes
 
 - name: Creates directory
   file:
@@ -35,7 +36,7 @@
 
 - name: make sure the latest npm is installed
   become: true
-  command: npm install -g n
+  command: npm install -g npm
   args:
     chdir: /home/ubuntu/backend
 
