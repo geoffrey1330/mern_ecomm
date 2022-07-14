@@ -56,16 +56,16 @@
     chdir: /home/ubuntu/backend
 
 ####################
-- name: "Execute seeder "
-  become: true
-  command: npm run data:import
-  args:
-    chdir: /home/ubuntu/backend
+# - name: "Execute seeder "
+#   become: true
+#   command: npm run data:import
+#   args:
+#     chdir: /home/ubuntu/backend
 
-- name: "Executing node"
-  become: true
-  command: pm2 start npm --name backend -- run start
-  args:
-    chdir: /home/ubuntu/backend
+# - name: "Executing node"
+#   become: true
+#   command: pm2 start npm --name backend -- run start
+#   args:
+#     chdir: /home/ubuntu/backend
 
 #####################

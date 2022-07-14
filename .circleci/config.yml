@@ -277,7 +277,7 @@ jobs:
             export API_URL="http://${BACKEND_IP}:5000"
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:5000" >> frontend/.env
-            sed -i 's/127.0.0.1/${BACKEND_IP}/g' frontend/package.json
+            sed -i 's/"http://127.0.0.1:5000"/"http://${BACKEND_IP}:5000"/g' frontend/package.json
             cat frontend/package.json
       - run:
           name: Deploy frontend objects
