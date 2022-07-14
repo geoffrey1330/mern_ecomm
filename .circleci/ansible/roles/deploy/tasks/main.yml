@@ -13,8 +13,7 @@
   become: true
   apt:
     name: ["nodejs", "npm"]
-    state: latest
-    update_cache: yes
+    update_cache: "yes"
 
 - name: Creates directory
   file:
@@ -36,7 +35,7 @@
 
 - name: make sure the latest npm is installed
   become: true
-  command: npm install -g npm
+  command: npm install -g n
   args:
     chdir: /home/ubuntu/backend
 
@@ -48,38 +47,24 @@
     production: yes
     state: present
 
-# - name: "install typescript"
-#   become: yes
-#   npm:
-#     name: typescript
-#     global: yes
-#     production: yes
-#     state: present
 
-# - name: " update dependencies"
-#   become: true
-#   shell: |
-#     cd /home/ubuntu/backend
-#     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-#     apt-get install -y nodejs  
-#     npm install -g n
-#     npm install
 - name: "build package"
   become: true
   command: npm run build --if-present
   args:
     chdir: /home/ubuntu/backend
 
+####################
+# - name: "Execute seeder "
+#   become: true
+#   command: npm run data:import
+#   args:
+#     chdir: /home/ubuntu/backend
 
-- name: "Execute seeder "
-  become: true
-  command: npm run data:import
-  args:
-    chdir: /home/ubuntu/backend
+# - name: "Executing node"
+#   become: true
+#   command: pm2 start npm --name backend -- run start
+#   args:
+#     chdir: /home/ubuntu/backend
 
-- name: "Executing node"
-  become: true
-  command: pm2 start npm --name backend -- run start
-  args:
-    chdir: /home/ubuntu/backend
-
+#####################
