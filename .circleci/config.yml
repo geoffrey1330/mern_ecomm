@@ -262,10 +262,10 @@ jobs:
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --output text)
             export API_URL="http://${BACKEND_IP}:5000"
-            export OLD_URL = "http://127.0.0.1:5000",
+            export OLD_URL="http://127.0.0.1:5000",
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:5000" >> frontend/.env
-            sed -i 's/OLD_URL/API_URL/g' frontend/package.json
+            sed -i 's/$OLD_URL/$API_URL/g' frontend/package.json
             cat frontend/package.json
       - run:
           name: Deploy frontend objects
