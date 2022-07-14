@@ -71,4 +71,4 @@ const server = app.listen(
   )
 );
 
-module.exports = server;
+export default server;

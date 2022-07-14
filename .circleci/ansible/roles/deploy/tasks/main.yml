@@ -13,6 +13,7 @@
   become: true
   apt:
     name: ["nodejs", "npm"]
+    state: latest
     update_cache: "yes"
 
 - name: Creates directory
@@ -33,11 +34,11 @@
     dest: /home/ubuntu/backend
 
 
-- name: make sure the latest npm is installed
-  become: true
-  command: npm install -g n
-  args:
-    chdir: /home/ubuntu/backend
+# - name: make sure the latest npm is installed
+#   become: true
+#   command: npm install -g n
+#   args:
+#     chdir: /home/ubuntu/backend
 
 - name: "install pm2"
   become: yes
@@ -55,16 +56,16 @@
     chdir: /home/ubuntu/backend
 
 ####################
-# - name: "Execute seeder "
-#   become: true
-#   command: npm run data:import
-#   args:
-#     chdir: /home/ubuntu/backend
+- name: "Execute seeder "
+  become: true
+  command: npm run data:import
+  args:
+    chdir: /home/ubuntu/backend
 
-# - name: "Executing node"
-#   become: true
-#   command: pm2 start npm --name backend -- run start
-#   args:
-#     chdir: /home/ubuntu/backend
+- name: "Executing node"
+  become: true
+  command: pm2 start npm --name backend -- run start
+  args:
+    chdir: /home/ubuntu/backend
 
 #####################
