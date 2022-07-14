@@ -295,7 +295,7 @@ jobs:
           command: |
             apk add --update ansible tar gzip nodejs npm curl
             curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-            sudo apt-get install -y nodejs
+            apt-get install -y nodejs
             pip install awscli
       - run:
           name: create .env files
