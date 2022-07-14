@@ -264,7 +264,7 @@ jobs:
             export API_URL="http://${BACKEND_IP}:5000"
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:5000" >> frontend/.env
-            echo {
+            echo "{
               "name": "frontend",
               "proxy": "http://${BACKEND_IP}:5000",
               "version": "0.1.0",
@@ -309,7 +309,8 @@ jobs:
                   "last 1 safari version"
                 ]
               }
-            } >> frontend/package.json
+            }" >> frontend/package.json
+
             cat frontend/package.json
       - run:
           name: Deploy frontend objects
