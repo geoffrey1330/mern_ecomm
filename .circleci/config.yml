@@ -303,7 +303,7 @@ jobs:
             echo MONGO_URI=$MONGO_URI >> "backend/.env"
             echo PORT=$PORT >> "backend/.env"
             echo JWT_SECRET=$JWT_SECRET >> "backend/.env"
-            echo CORS_DOMAINS=http://localhost:3000,http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com >> "backend/.env"
+            echo CORS_DOMAINS=http://localhost:3000,http://udapeople-${CIRCLE_WORKFLOW_ID:0:7}.s3-website-us-east-1.amazonaws.com,http://d3umlz7ifs1r27.cloudfront.net >> "backend/.env"
       - run:
           name: Deploy backend
           command: |
