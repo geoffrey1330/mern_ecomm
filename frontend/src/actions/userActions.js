@@ -27,7 +27,7 @@ import {
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
-///import {apiEndpoint} from '../api'
+const API = axios.create({baseURL: process.env.REACT_APP_PROD_API_BASE})
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -41,7 +41,7 @@ export const login = (email, password) => async (dispatch) => {
       },
     }
 
-    const { data } = await axios.post(
+    const { data } = await API.post(
       '/api/users/login',
       { email, password },
       config

@@ -5,19 +5,11 @@ import colors from 'colors'
 import morgan from 'morgan'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
-
+import cors from 'cors'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
-
-// const path = require('path');
-// const express = require('express');
-// const dotenv = require('dotenv');
-// const colors = require('colors');
-// const morgan = require('morgan');
-// const { notFound, errorHandler } = require('./middleware/errorMiddleware')
-
 
 dotenv.config()
 
@@ -29,6 +21,24 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+////////////
+const domainsFromEnv = process.env.CORS_DOMAINS || ""
+
+const whitelist = domainsFromEnv.split(",").map(item => item.trim())
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+app.use(cors(corsOptions))
+
+////////////
 app.use(express.json())
 
 app.use('/api/products', productRoutes)

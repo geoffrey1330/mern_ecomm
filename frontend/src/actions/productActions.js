@@ -24,13 +24,14 @@ import {
 } from '../constants/productConstants'
 import { logout } from './userActions'
 
+const API = axios.create({baseURL: process.env.REACT_APP_PROD_API_BASE})
 export const listProducts = (keyword = '', pageNumber = '') => async (
   dispatch
 ) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
-    const { data } = await axios.get(
+    const { data } = await API.get(
       `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     )
 
@@ -53,7 +54,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await API.get(`/api/products/${id}`)
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
